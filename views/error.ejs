@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>College Students Flight Booking LLC</title>
+</head>
+
+<body>
+    <%- include('partials/header'); -%>
+    <div class="container">
+        <!--403 forbidden, 404 not found, 500 internal server error-->
+        <h2 class="row justify-content-md-center"><%=err%>!</h2>
+        <h2 class="row justify-content-md-center">
+            <% if(err == 403){%>
+            Hey! you are not supposed to be here!
+            <%}else if(err == 404){%>
+            Oops! This page cannot be found.
+            <%}else if(err == 500){%>
+            Oops! The server got confused, please try again.
+            <%}%>
+        </h2>
+    </div>
+
+</body>
+
+</html>

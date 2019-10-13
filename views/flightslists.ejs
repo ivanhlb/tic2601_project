@@ -1,0 +1,37 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>Airline Ticketing System</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <%- include('partials/flights_header', {flights: flights}); -%>
+    <form>
+      <div style="background-color:#eeeeee; padding: 0em 2em; border: lightgray 0.2em solid;">
+        <br><br>
+        <%- include('partials/flights', {flight: "depart"}); -%>
+        <br><br>
+        <%if(flights == "return") {%>
+        <%- include('partials/flights', {flight: "return"}); -%>
+        <%}%>
+            <br>
+
+            <!-- Proceed to confirmation -->
+            <div style="text-align: right; margin: 2em;">
+              <button type="button" class="btn btn-warning btn-lg" onclick="window.history.back()">Back</button>
+              <input class="btn btn-primary btn-lg" type="submit" name="formSubmit" value="Proceed" formmethod="POST"
+                formaction="/particulars">
+            </div>
+          </div>
+    </form>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<% if(flight == "depart"){ %>
+<h2 style="font-weight: bold">
+    Departing Flight
+</h2>
+<%}%>
+    <% if(flight == "return"){ %>
+<h2 style="font-weight: bold">
+    Returning Flight
+</h2>
+<%}%>
+<br>
+<table>
+    <thead>
+        <tr>
+                <% if(flight == "depart"){ %>
+<th><%=from%> to <%=to%></th>
+<%}%>
+                    
+            <% if(flight == "return"){ %>
+<th><%=to%> to <%=from%></th>
+<%}%>
+        </tr>
+</thead>
+<tbody>
+    <%- include('flightrow', {flightType: flight, flightID: "SQ1"}); -%><!--directory is relative-->
+    <%- include('flightrow', {flightType: flight, flightID: "SQ2"}); -%><!--directory is relative-->
+    <%- include('flightrow', {flightType: flight, flightID: "SQ3"}); -%><!--directory is relative-->
+</tbody>
+</table>

@@ -1,0 +1,56 @@
+<% var today = new Date(), tmr = new Date(); 
+        tmr.setDate(tmr.getDate() + 1)
+        var todayStr = today.toISOString().slice(0,10);
+        var tmrStr = tmr.toISOString().slice(0,10);
+        %>
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 justify-content-md-center" style="text-align: center">
+
+        <form action="/search" name="searchFlightForm" onsubmit="return validateForm()">
+            <div>
+                <label for="onewayflight">One Way:</label>
+                <input type="radio" name="flights" id="onewayflight" oninput="eventCallback(this)" value="oneway" autocomplete="off">
+                <label for="returnflight">Return: </label>
+                <input type="radio" name="flights" id="returnflight" oninput="eventCallback(this)" value="return" checked
+                    autocomplete="off">
+                <label for="multicityflight">Multi-City: </label>
+                <input type="radio" name="flights" id="multicityflight" oninput="eventCallback(this)" value="multicity"
+                    autocomplete="off">
+                <!--basically one way, many times-->
+            </div>
+            <br>
+            <datalist id="countries">
+                <% if(countries) { %>
+                <% countries.forEach(function(c) { %>
+                <option value='<%= c.name %>'><%= c.name %></option>
+                <% }); %>
+                <% } else { %>
+                <option value="Singapore">Singapore</option>
+                <option value="China">China</option>
+                <option value="Germany">Germany</option>
+                <% }; %>
+            </datalist>
+            <div>
+                <label for="fromCountries">From:</label>
+                <input id="fromCountries" list="countries" name="From" list="countries" placeholder="Singapore"
+                    autocomplete="off" required>
+                <label for="toCountries">To:</label>
+                <input id="toCountries" list="countries" name="To" list="countries" placeholder="Osaka"
+                    autocomplete="off" required>
+            </div>
+            <br>
+            <div>
+                <label for="startDateInput">Departure Date: </label>
+                <input type="date" id="startDateInput" name="startDate" value=<%=todayStr%> min=<%=todayStr%>>
+                <label for="returnDateInput">Return Date: </label>
+                <input type="date" id="returnDateInput" name="returnDate" value=<%=tmrStr%> min=<%=todayStr%>>
+            </div>
+            <br>
+            <label for="noOfPax">Number of Travellers:</label>
+            <input size="5" id="noOfPax" type="number" min="1" max="100" value="1" autocomplete="off">
+            <input type="submit" value="Search for Flights" id="searchSubmit" formmethod="POST">
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>
