@@ -7,7 +7,8 @@
 
 <!-- Show selections based on previous page-->
 
-<div style="background-color:#e6eeff; margin: 0em; border: lightgray 0.2em solid;" class="row justify-content-md-center">
+<div style="background-color:#e6eeff; margin: 0em; border: lightgray 0.2em solid;"
+    class="row justify-content-md-center">
     <div class="col-sm-5">
         <h3 style="font-weight: bold">Departing</h3>
         <div style="width: inherit; display: table;">
@@ -28,9 +29,17 @@
         </div>
     </div>
     <div class="col-sm-2"></div>
-    <!--ARRIVAL-->
+    <%if(flightType != "oneway") {%>
+    <!--next flight-->
     <div class="col-sm-5">
+        <%if(flightType == "return") {%>
+
         <h3 style="font-weight: bold">Returning</h3>
+        <%}%>
+        <%if(flightType == "multicity") {%>
+
+            <h3 style="font-weight: bold">Next</h3>
+            <%}%>
         <div style="width: inherit; display: table;">
             <div>
 
@@ -48,4 +57,5 @@
             </div>
         </div>
     </div>
-</div>
+    <%}%>
+    </div>

@@ -10,12 +10,12 @@
         <form action="/search" name="searchFlightForm" onsubmit="return validateForm()">
             <div>
                 <label for="onewayflight">One Way:</label>
-                <input type="radio" name="flights" id="onewayflight" oninput="eventCallback(this)" value="oneway" autocomplete="off">
+                <input type="radio" name="flightType" id="onewayflight" oninput="eventCallback(this)" value="oneway" autocomplete="off">
                 <label for="returnflight">Return: </label>
-                <input type="radio" name="flights" id="returnflight" oninput="eventCallback(this)" value="return" checked
+                <input type="radio" name="flightType" id="returnflight" oninput="eventCallback(this)" value="return" checked
                     autocomplete="off">
                 <label for="multicityflight">Multi-City: </label>
-                <input type="radio" name="flights" id="multicityflight" oninput="eventCallback(this)" value="multicity"
+                <input type="radio" name="flightType" id="multicityflight" oninput="eventCallback(this)" value="multicity"
                     autocomplete="off">
                 <!--basically one way, many times-->
             </div>

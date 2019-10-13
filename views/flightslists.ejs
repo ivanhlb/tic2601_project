@@ -11,14 +11,14 @@
 <body>
 
   <div class="container">
-    <%- include('partials/flights_header', {flights: flights}); -%>
+    <%- include('partials/flights_header', {flightType: flightType}); -%>
     <form>
       <div style="background-color:#eeeeee; padding: 0em 2em; border: lightgray 0.2em solid;">
         <br><br>
-        <%- include('partials/flights', {flight: "depart"}); -%>
+        <%- include('partials/flights', {flight: "depart", flights: firstFlights}); -%>
         <br><br>
-        <%if(flights == "return") {%>
-        <%- include('partials/flights', {flight: "return"}); -%>
+        <%if(flightType != "oneway") {%>
+        <%- include('partials/flights', {flight: "return", flights: nextFlights}); -%>
         <%}%>
             <br>
 

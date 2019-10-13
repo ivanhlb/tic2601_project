@@ -1,83 +1,111 @@
 <!-- Set general style -->
 <style>
-html, head, body {
-  width: 100%;
-}
-h1 {
-    margin:0;
-    padding:0;
+  html,
+  head,
+  body {
+    width: 100%;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
     font-size: 30px;
-}
-h2 {
-    margin:0;
+  }
+
+  h2 {
+    margin: 0;
     margin-top: 10px;
     margin-bottom: 15px;
-    padding:0;
+    padding: 0;
     font-size: 25px;
-}
-h3 {
-  margin:0;
-  margin-top: 20px;
-  margin-bottom: 15px;
-  padding:0;
-  font-size: 20px;
-}
-h4 {
-  font-size: 15px;
-  font-weight: normal;
-}
-#block1 {
-  margin:0;
-  padding:0;
-  width: 250px;
-  float: left;
-}
-#block2 {
-  margin:0;
-  padding:0;
-  width: 250px;
-  float: right;
-}
-.button1 {
+  }
+
+  h3 {
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding: 0;
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 15px;
+    font-weight: normal;
+  }
+
+  #block1 {
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    float: left;
+  }
+
+  #block2 {
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    float: right;
+  }
+
+  .button1 {
     background-color: rgb(0, 36, 114);
     color: white;
-}
-.legend {
+  }
+
+  .legend {
     list-style: none;
-}
-.legend li {
-    float: left; margin-right: 10px;
-}
-.legend span {
-    border: 1px; float: left; width: 10px; height: 12px; margin: 2px;
-}
-.legend .available {
+  }
+
+  .legend li {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .legend span {
+    border: 1px;
+    float: left;
+    width: 10px;
+    height: 12px;
+    margin: 2px;
+  }
+
+  .legend .available {
     border-radius: 3px;
     background-color: rgb(10, 75, 10);
-}
-.legend .notavailable {
+  }
+
+  .legend .notavailable {
     border-radius: 3px;
     background-color: #949393;
-}
-.legend .selected {
+  }
+
+  .legend .selected {
     border-radius: 3px;
     background-color: rgb(0, 36, 114);
-}
-*, *:before, *:after {
+  }
+
+  *,
+  *:before,
+  *:after {
     box-sizing: border-box;
-}
-html {
+  }
+
+  html {
     font-size: 16px;
-}
-.plane {
+  }
+
+  .plane {
     margin: 20px auto;
     max-width: 300px;
-}
-.exit {
+  }
+
+  .exit {
     position: relative;
     height: 50px;
-}
-.exit:before, .exit:after {
+  }
+
+  .exit:before,
+  .exit:after {
     content: "EXIT";
     font-size: 14px;
     line-height: 18px;
@@ -88,63 +116,76 @@ html {
     color: green;
     top: 50%;
     transform: translate(0, -50%);
-}
-.exit:before {
+  }
+
+  .exit:before {
     left: 0;
-}
-.exit:after {
+  }
+
+  .exit:after {
     right: 0;
-}
-.fuselage {
+  }
+
+  .fuselage {
     border-right: 3px solid #d8d8d8;
     border-left: 3px solid #d8d8d8;
-}
-ol {
+  }
+
+  ol {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-.seats {
+  }
+
+  .seats {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
-}
-.seat {
+  }
+
+  .seat {
     display: flex;
     flex: 0 0 14.28571428571429%;
     padding: 5px;
     position: relative;
-}
-.seat:nth-child(3) {
+  }
+
+  .seat:nth-child(3) {
     margin-right: 14.28571428571429%;
-}
-.seat input[type=checkbox] {
+  }
+
+  .seat input[type=checkbox] {
     position: absolute;
     opacity: 0;
-}
-.seat input[type=checkbox]:checked + label {
+  }
+
+  .seat input[type=checkbox]:checked+label {
     background: rgb(0, 36, 114);
     box-shadow: 0 0 0px 3px #5C6AFF;
-}
-.seat input[type=checkbox]:disabled + label {
+  }
+
+  .seat input[type=checkbox]:disabled+label {
     background: #949393;
     text-indent: -9999px;
     overflow: hidden;
-}
-.seat input[type=checkbox]:disabled + label:after {
+  }
+
+  .seat input[type=checkbox]:disabled+label:after {
     content: "X";
     text-indent: 0;
     position: absolute;
     top: 4px;
     left: 50%;
     transform: translate(-50%, 0%);
-}
-.seat input[type=checkbox]:disabled + label:hover {
+  }
+
+  .seat input[type=checkbox]:disabled+label:hover {
     box-shadow: none;
     cursor: not-allowed;
-}
-.seat label {
+  }
+
+  .seat label {
     display: block;
     position: relative;
     width: 100%;
@@ -155,115 +196,100 @@ ol {
     padding: 4px 0;
     background: rgb(10, 75, 10);
     border-radius: 5px;
-}
-.seat label:hover {
+  }
+
+  .seat label:hover {
     cursor: pointer;
     box-shadow: 0 0 0px 2px #5C6AFF;
-}
-* {box-sizing: border-box}
-/* Style the tab */
-.tab {
-  float: left;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  width: 20%;
-  height: 520px;
-}
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  display: block;
-  background-color: inherit;
-  color: black;
-  padding: 22px 16px;
-  width: 100%;
-  border: none;
-  outline: none;
-  text-align: left;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 15px;
-}
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
-/* Create an active/current "tab button" class */
-.tab button.active {
-  background-color: #ccc;
-}
-/* Style the tab content */
-.tabcontent {
-  float: left;
-  padding: 0px 12px;
-  border: 1px solid #ccc;
-  width: 70%;
-  border-left: none;
-  height: 520px;
-}
+  }
+
+  * {
+    box-sizing: border-box
+  }
+
+  /* Style the tab */
+  .tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 20%;
+    height: 520px;
+  }
+
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  /* Create an active/current "tab button" class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 520px;
+  }
 </style>
 
 <html>
 <!-- Webpage design -->
-<head> <title>Airline Ticketing System</title> </head>
+
+<head>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Airline Ticketing System</title>
+</head>
+
 <body>
-<table>
-<tr> <td colspan="2" style="background-color:rgb(0, 36, 114);">
-<h1> <font color="white">Passenger details</font></h1>
-</td> </tr>
+  <div class="container">
 
-<!-- Show selections based on previous page -->
-<tr> <td colspan="2" style="background-color:#e6eeff;">
-  <div id = "block1">
-    <b><h3>Departing</font></h3></b>
-      <h4>01 DEC (SUN) <br>
-        <div style = "font-size:25px; font-weight:bold; color:rgb(0, 36, 114);">SIN 02:30 </div>
-      SINGAPORE (SIN) <br></h4>
-  </div>
-  <div style = "float: left;position: relative;top: 80px;left: -40px;">
-    <img src="https://img.icons8.com/metro/26/000000/airplane-mode-on.png">
-  </div>
-  <div id = "block2">
-    <b><h3> <br></font></h3></b>
-      <h4>12 DEC (THU) <br>
-        <div style = "font-size:25px; font-weight:bold;color:rgb(0, 36, 114);">SIN 09:50 </div>
-      SINGAPORE (SIN)  <br></h4>
-  </div>
-  <div id = "block2">
-    <b><h3>Returning</font></h3></b>
-      <h4>12 DEC (THU) <br>
-        <div style = "font-size:25px; font-weight:bold; color:rgb(0, 36, 114);">SIN 12:35 </div>
-      SEOUL (ICN) <br></h4>
-  </div>
-  <div style = "width: 50px;float: left;position: relative;top: 80px;left: 470px;">
-    <img src="https://img.icons8.com/metro/26/000000/airplane-mode-on.png">
-  </div>
-  <div id = "block2">
-    <b><h3><br> </font></h3></b>
-      <h4>01 DEC (SUN) <br>
-        <div style = "font-size:25px; font-weight:bold; color:rgb(0, 36, 114);">SIN 18:20 </div>
-      SEOUL (ICN) <br></h4>
-  </div>
-</td> </tr>
-<tr>
-<td style="background-color:#eeeeee;">
-<br>
+    <table>
+      <%- include('partials/particulars_header'); -%>
+
+      <td style="background-color:#eeeeee;">
+        <br>
 
 
 
-<!-- Creat tabs to fill in details for multiple passengers instances-->
-<div class="tab">
-  <button class="tablinks" onclick="openPassenger(event, 'Passenger1')" id="defaultOpen">Passenger 1</button>
-  <button class="tablinks" onclick="openPassenger(event, 'Passenger2')" id="defaultOpen">Passenger 2</button>
-</div>
-<div id="Passenger1" class="tabcontent">
-  <div style = "font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Passenger 1 </div>
-  <!-- Passenger details -->
-  <form>
-      <br>Membership number:<br>
-          <input type="text" name="Membership number" id="Membership number">
-  <b><h3>Name</font></h3></b>
-      Title: <br>
-          <select name="Title" size="1">
+        <!-- Creat tabs to fill in details for multiple passengers instances-->
+        <div class="tab">
+          <button class="tablinks" onclick="openPassenger(event, 'Passenger1')" id="defaultOpen">Passenger 1</button>
+          <button class="tablinks" onclick="openPassenger(event, 'Passenger2')" id="defaultOpen">Passenger 2</button>
+        </div>
+        <div id="Passenger1" class="tabcontent">
+          <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Passenger 1 </div>
+          <!-- Passenger details -->
+          <form action="/submit">
+            <br>Membership number:<br>
+            <input type="text" name="Membership number" id="Membership number">
+            <b>
+              <h3>Name</font>
+              </h3>
+            </b>
+            Title: <br>
+            <select name="Title" size="1">
               <option selected disabled>Select</option>
               <option value="Mr">Mr</option>
               <option value="Mrs">Mrs</option>
@@ -274,695 +300,124 @@ ol {
               <option value="Dr">Dr</option>
               <option value="Prof">Prof</option>
               <option value="Others">Others</option>
-          </select>
-      <br>First: <br>
-          <input type="text" name="First" id="First">
-      <br>Last:<br>
-          <input type="text" name="Last" id="Last">
-  <b><h3>Contact details</font></h3></b>
-      Email address:<br>
-          <input type="text" name="Email address" id="Email address">
-      <br>Phone number:<br>
-          <select name="Country Code" size="1">
+            </select>
+            <br>First: <br>
+            <input type="text" name="First" id="First">
+            <br>Last:<br>
+            <input type="text" name="Last" id="Last">
+            <b>
+              <h3>Contact details</font>
+              </h3>
+            </b>
+            Email address:<br>
+            <input type="email" name="Email address" id="Email address">
+            <br>Phone number:<br>
+            <select name="Country Code" size="1">
               <option selected disabled>Country/Region Code</option>
               <option value="Singapore (+65)">Singapore (+65)</option>
-          </select>
-          <input type="text" name="Phone number" id="Phone number">
-  <b><h3>Others</font></h3></b>
-    Any dietary requirements?<br>
-        <select name="Country Code" size="1">
+            </select>
+            <input type="text" name="Phone number" id="Phone number">
+            <b>
+              <h3>Others</font>
+              </h3>
+            </b>
+            Any dietary requirements?<br>
+            <select name="Country Code" size="1">
               <option selected disabled>Select</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
-        </select>
-    <input type="text" name="Remarks" id="Remarks">
-  <br><br>
-</div>
-<div id="Passenger2" class="tabcontent">
-  <div style = "font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Passenger 2 </div>
-  <!-- Passenger details -->
-      <br>Membership number:<br>
+            </select>
+            <input type="text" name="Remarks" id="Remarks">
+            <br><br>
+        </div>
+        <div id="Passenger2" class="tabcontent">
+          <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Passenger 2 </div>
+          <!-- Passenger details -->
+          <br>Membership number:<br>
           <input type="text" name="Membership number" id="Membership number">
-  <b><h3>Name</font></h3></b>
-      Title: <br>
+          <b>
+            <h3>Name</font>
+            </h3>
+          </b>
+          Title: <br>
           <select name="Title" size="1">
-              <option selected disabled>Select</option>
-              <option value="Mr">Mr</option>
-              <option value="Mrs">Mrs</option>
-              <option value="Miss">Miss</option>
-              <option value="Mdm">Mdm</option>
-              <option value="Ms">Ms</option>
-              <option value="Mstr">Mstr</option>
-              <option value="Dr">Dr</option>
-              <option value="Prof">Prof</option>
-              <option value="Others">Others</option>
+            <option selected disabled>Select</option>
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Miss">Miss</option>
+            <option value="Mdm">Mdm</option>
+            <option value="Ms">Ms</option>
+            <option value="Mstr">Mstr</option>
+            <option value="Dr">Dr</option>
+            <option value="Prof">Prof</option>
+            <option value="Others">Others</option>
           </select>
-      <br>First: <br>
+          <br>First: <br>
           <input type="text" name="First" id="First">
-      <br>Last:<br>
+          <br>Last:<br>
           <input type="text" name="Last" id="Last">
-  <b><h3>Contact details</font></h3></b>
-      Email address:<br>
+          <b>
+            <h3>Contact details</font>
+            </h3>
+          </b>
+          Email address:<br>
           <input type="text" name="Email address" id="Email address">
-      <br>Phone number:<br>
+          <br>Phone number:<br>
           <select name="Country Code" size="1">
-              <option selected disabled>Country/Region Code</option>
-              <option value="Singapore (+65)">Singapore (+65)</option>
+            <option selected disabled>Country/Region Code</option>
+            <option value="Singapore (+65)">Singapore (+65)</option>
           </select>
           <input type="text" name="Phone number" id="Phone number">
-  <b><h3>Others</font></h3></b>
-    Any dietary requirements?<br>
-        <select name="Country Code" size="1">
-              <option selected disabled>Select</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-        </select>
-    <input type="text" name="Remarks" id="Remarks">
-  <br><br>
-</div>
-
-<!-- Function to create tabs for multiple passengers instances -->
-<script>
-    function openPassenger(evt, Passenger) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(Passenger).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-    </script>
-
-<!-- Seat selections - Departing -->
-<br>
-<div style = "font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Selection of seats - Departing flight </div>
-    <ul class="legend">
-        <li><span class="available"></span> Available</li>
-        <li><span class="notavailable"></span> Not available</li>
-        <li><span class="selected"></span> Selected seat</li>
-    </ul>
-<br>
-    <div class="plane">
-        <div class="exit exit--front fuselage">
+          <b>
+            <h3>Others</font>
+            </h3>
+          </b>
+          Any dietary requirements?<br>
+          <select name="Country Code" size="1">
+            <option selected disabled>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+          <input type="text" name="Remarks" id="Remarks">
+          <br><br>
         </div>
-        <ol class="cabin fuselage">
-          <li class="row row--1">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="1A" />
-                <label for="1A">1A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="1B" />
-                <label for="1B">1B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="1C" />
-                <label for="1C">1C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="1D" />
-                <label for="1D">1D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="1E" />
-                <label for="1E">1E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="1F" />
-                <label for="1F">1F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--2">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="2A" />
-                <label for="2A">2A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="2B" />
-                <label for="2B">2B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="2C" />
-                <label for="2C">2C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="2D" />
-                <label for="2D">2D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="2E" />
-                <label for="2E">2E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="2F" />
-                <label for="2F">2F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--3">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="3A" />
-                <label for="3A">3A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="3B" />
-                <label for="3B">3B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="3C" />
-                <label for="3C">3C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="3D" />
-                <label for="3D">3D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="3E" />
-                <label for="3E">3E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="3F" />
-                <label for="3F">3F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--4">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="4A" />
-                <label for="4A">4A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4B" />
-                <label for="4B">4B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4C" />
-                <label for="4C">4C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4D" />
-                <label for="4D">4D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4E" />
-                <label for="4E">4E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4F" />
-                <label for="4F">4F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--5">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="5A" />
-                <label for="5A">5A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5B" />
-                <label for="5B">5B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5C" />
-                <label for="5C">5C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5D" />
-                <label for="5D">5D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5E" />
-                <label for="5E">5E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5F" />
-                <label for="5F">5F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--6">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="6A" />
-                <label for="6A">6A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6B" />
-                <label for="6B">6B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6C" />
-                <label for="6C">6C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6D" />
-                <label for="6D">6D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6E" />
-                <label for="6E">6E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6F" />
-                <label for="6F">6F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--7">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="7A" />
-                <label for="7A">7A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7B" />
-                <label for="7B">7B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7C" />
-                <label for="7C">7C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7D" />
-                <label for="7D">7D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7E" />
-                <label for="7E">7E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7F" />
-                <label for="7F">7F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--8">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="8A" />
-                <label for="8A">8A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8B" />
-                <label for="8B">8B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8C" />
-                <label for="8C">8C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8D" />
-                <label for="8D">8D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8E" />
-                <label for="8E">8E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8F" />
-                <label for="8F">8F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--9">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" disabled id="9A" />
-                <label for="9A">9A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="9B" />
-                <label for="9B">9B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="9C" />
-                <label for="9C">9C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="9D" />
-                <label for="9D">9D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="9E" />
-                <label for="9E">9E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="9F" />
-                <label for="9F">9F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--10">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="10A" />
-                <label for="10A">10A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="10B" />
-                <label for="10B">10B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="10C" />
-                <label for="10C">10C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="10D" />
-                <label for="10D">10D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="10E" />
-                <label for="10E">10E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="10F" />
-                <label for="10F">10F</label>
-              </li>
-            </ol>
-          </li>
-        </ol>
-        <div class="exit exit--back fuselage">
-        </div>
-      </div>
 
-<!-- Seat selections - Returning -->
-<br>
-<div style = "font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Selection of seats - Returning flight </div>
-    <ul class="legend">
-        <li><span class="available"></span> Available</li>
-        <li><span class="notavailable"></span> Not available</li>
-        <li><span class="selected"></span> Selected seat</li>
-    </ul>
-<br>
-    <div class="plane">
-        <div class="exit exit--front fuselage">
-        </div>
-        <ol class="cabin fuselage">
-          <li class="row row--1">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="1A-R" />
-                <label for="1A-R">1A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="1B-R" />
-                <label for="1B-R">1B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="1C-R" />
-                <label for="1C-R">1C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="1D-R" />
-                <label for="1D-R">1D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="1E-R" />
-                <label for="1E-R">1E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="1F-R" />
-                <label for="1F-R">1F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--2">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="2A-R" />
-                <label for="2A-R">2A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="2B-R" />
-                <label for="2B-R">2B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="2C-R" />
-                <label for="2C-R">2C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="2D-R" />
-                <label for="2D-R">2D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="2E-R" />
-                <label for="2E-R">2E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="2F-R" />
-                <label for="2F-R">2F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--3">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" disabled id="3A-R" />
-                <label for="3A-R">3A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" disabled id="3B-R" />
-                <label for="3B-R">3B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="3C-R" />
-                <label for="3C-R">3C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="3D-R" />
-                <label for="3D-R">3D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="3E-R" />
-                <label for="3E-R">3E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="3F-R" />
-                <label for="3F-R">3F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--4">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="4A-R" />
-                <label for="4A-R">4A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4B-R" />
-                <label for="4B-R">4B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4C-R" />
-                <label for="4C-R">4C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4D-R" />
-                <label for="4D-R">4D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4E-R" />
-                <label for="4E-R">4E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="4F-R" />
-                <label for="4F-R">4F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--5">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="5A-R" />
-                <label for="5A-R">5A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5B-R" />
-                <label for="5B-R">5B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5C-R" />
-                <label for="5C-R">5C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5D-R" />
-                <label for="5D-R">5D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5E-R" />
-                <label for="5E-R">5E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="5F-R" />
-                <label for="5F-R">5F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--6">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="6A-R" />
-                <label for="6A-R">6A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6B-R" />
-                <label for="6B-R">6B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6C-R" />
-                <label for="6-RC">6C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6D-R" />
-                <label for="6D-R">6D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6E-R" />
-                <label for="6E-R">6E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="6F-R" />
-                <label for="6F-R">6F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--7">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="7A-R" />
-                <label for="7A-R">7A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7B-R" />
-                <label for="7B-R">7B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7C-R" />
-                <label for="7C-R">7C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7D-R" />
-                <label for="7D-R">7D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7E-R" />
-                <label for="7E-R">7E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="7F-R" />
-                <label for="7F-R">7F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--8">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="8A-R" />
-                <label for="8A-R">8A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8B-R" />
-                <label for="8B-R">8B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8C-R" />
-                <label for="8C-R">8C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8D-R" />
-                <label for="8D-R">8D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8E-R" />
-                <label for="8E-R">8E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="8F-R" />
-                <label for="8F-R">8F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--9">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="9A-R" />
-                <label for="9A-R">9A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="9B-R" />
-                <label for="9B-R">9B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="9C-R" />
-                <label for="9C-R">9C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="9D-R" />
-                <label for="9D-R">9D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="9E-R" />
-                <label for="9E-R">9E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="9F-R" />
-                <label for="9F-R">9F</label>
-              </li>
-            </ol>
-          </li>
-          <li class="row row--10">
-            <ol class="seats" type="A">
-              <li class="seat">
-                <input type="checkbox" id="10A-R" />
-                <label for="10A-R">10A</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="10B-R" />
-                <label for="10B-R">10B</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="10C-R" />
-                <label for="10C-R">10C</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="10D-R" />
-                <label for="10D-R">10D</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="10E-R" />
-                <label for="10E-R">10E</label>
-              </li>
-              <li class="seat">
-                <input type="checkbox" id="10F-R" />
-                <label for="10F-R">10F</label>
-              </li>
-            </ol>
-          </li>
-        </ol>
-        <div class="exit exit--back fuselage">
-        </div>
-      </div>
+        <!-- Function to create tabs for multiple passengers instances -->
+        <script>
+          function openPassenger(evt, Passenger) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(Passenger).style.display = "block";
+            evt.currentTarget.className += " active";
+          }
+          // Get the element with id="defaultOpen" and click on it
+          document.getElementById("defaultOpen").click();
+        </script>
 
-<!-- Proceed to confirmation -->
-<br><input type="submit" name="formSubmit" value="Proceed"  class="button1"><br>
+        <!-- Seat selections - Departing -->
+        <br>
+        <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Selection of seats -
+          Departing flight </div>
+        <%- include('partials/plane'); -%>
 
-<!--Credits for icons-->
-<br><a href="https://icons8.com/icon/3690/airplane-mode-on">Airplane Mode On icon by Icons8</a>
+        <!-- Seat selections - Returning -->
+        <br>
+        <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Selection of seats -
+          Returning flight </div>
+        <%- include('partials/plane'); -%>
 
-</form>
-</table>
+        <!-- Proceed to confirmation -->
+        <br><input class="btn btn-primary btn-lg" style="float: right;" type="submit" name="formSubmit" formmethod="POST" value="Proceed" class="button1"><br>
+        </form>
+    </table>
+  </div>
 </body>
+
 </html>

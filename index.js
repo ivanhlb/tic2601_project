@@ -47,25 +47,40 @@ app.get('/', (req, res) => {
     renderMainPage(res);
 });
 app.post('/search', (req, res) => {
-    console.dir(req.body);
     let param = {};
     param.from = req.body.From;
     param.to = req.body.To;
     param.startDate = new Date(req.body.startDate);
     param.endDate = new Date(req.body.returnDate);
-    param.flights = req.body.flights;
+    param.flightType = req.body.flightType; //referring to the type of flights
     // connection.query(
     //     'SELECT * FROM '
     // )    //to be done to integrate DB.
+    //REGION stand in data
+    param.firstFlights = [
+        { id: "SQ241", price: 1534.23, depart_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.startDate.getDate(), 9, 20), arrival_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.endDate.getDate(), 16, 50) },
+        { id: "SQ161", price: 1234.23, depart_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.startDate.getDate(), 11, 30), arrival_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.endDate.getDate(), 19, 50) },
+        { id: "SQ652", price: 1004.23, depart_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.startDate.getDate(), 2, 30), arrival_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.endDate.getDate(), 9, 50) }
+    ]       //list of departing flights
+    if (param.flightType != "oneway") {
+        param.nextFlights = [ //list of returning/next multicity flights.
+            { id: "SQ341", price: 1534.23, depart_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 9, 25), arrival_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 16, 50) },
+            { id: "SQ761", price: 1234.23, depart_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 11, 25), arrival_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 19, 50) },
+            { id: "SQ612", price: 1004.23, depart_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 2, 30), arrival_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 9, 50) }
+        ]
+    }
+    //ENDREGION stand in data
+    console.dir(param);
     res.render('flightslists', param);
 });
 //403 forbidden, 404 not found, 500 internal server error
 
-app.post('/particulars', (req, res) => {
+app.post('/particulars', (req, res) => {    //this is for inserting your personal particulars once you decide which flight to take.
     console.dir(req.body);
-    res.render('error', { err: 404 });
+    res.render('passenger_details');
 }); //to implement
 app.get('/admin', (req, res) => { res.render('error', { err: 403 }) }); //to implement
 app.get('/account', (req, res) => res.render('error', { err: 404 }));    //to implement
 app.get('/*', (req, res) => res.render('error', { err: 404 }));         //default 404 route
+app.post('/*', (req, res) => res.render('error', { err: 404 }));         //default 404 route
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
