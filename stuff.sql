@@ -20,21 +20,24 @@ CREATE TABLE flight_schedule (
     flight_id VARCHAR(5) PRIMARY KEY,
     plane_id VARCHAR(32) FOREIGN KEY,
     airline_id CHAR(2) NOT NULL,
-    • Departure
-            ▪ Airport
-            ▪ Terminal
-            ▪ DateTime
-            ▪ Country
-            ▪ City
-
-    • Arrival
-            ▪ Airport
-            ▪ Terminal
-            ▪ DateTime
-            ▪ Country
-            ▪ City
+    departure_airport CHAR(3) NOT NULL,
+    departure_time DATETIME NOT NULL,
+    arrival_airport CHAR(3) NOT NULL,
+    arrival_time DATETIME NOT NULL
+)
+CREATE TABLE plane_layout(
+    seat_id CHAR(2) PRIMARY KEY,
+    class_type VARCHAR() 
 )
 
-CREATE TABLE flight (
-    
+CREATE TABLE ticket (
+    ticket_id CHAR(15) PRIMARY KEY,
+    seat_id CHAR(2) FOREIGN KEY REFERENCES
+        ◦ Seat ID FOREIGN KEY
+        ◦ Booking ID FOREIGN KEY
+        ◦ Customer ID FOREIGN KEY
+)
+CREATE TABLE booking (
+    booking_id VARCHAR(8) PRIMARY KEY;
+    flight_id VARCHAR(5) FOREIGN KEY REFERENCES flight_schedule(flight_id);
 )
