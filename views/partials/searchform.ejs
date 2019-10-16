@@ -10,13 +10,14 @@
         <form action="/search" name="searchFlightForm" onsubmit="return validateForm()">
             <div>
                 <label for="onewayflight">One Way:</label>
-                <input type="radio" name="flightType" id="onewayflight" oninput="eventCallback(this)" value="oneway" autocomplete="off">
+                <input type="radio" name="flightType" id="onewayflight" oninput="eventCallback(this)" value="oneway"
+                    autocomplete="off">
                 <label for="returnflight">Return: </label>
-                <input type="radio" name="flightType" id="returnflight" oninput="eventCallback(this)" value="return" checked
-                    autocomplete="off">
+                <input type="radio" name="flightType" id="returnflight" oninput="eventCallback(this)" value="return"
+                    checked autocomplete="off">
                 <label for="multicityflight">Multi-City: </label>
-                <input type="radio" name="flightType" id="multicityflight" oninput="eventCallback(this)" value="multicity"
-                    autocomplete="off">
+                <input type="radio" name="flightType" id="multicityflight" oninput="eventCallback(this)"
+                    value="multicity" autocomplete="off">
                 <!--basically one way, many times-->
             </div>
             <br>
@@ -33,11 +34,10 @@
             </datalist>
             <div>
                 <label for="fromCountries">From:</label>
-                <input id="fromCountries" list="countries" name="From" list="countries" placeholder="Singapore"
-                    autocomplete="off" required>
+                <input id="fromCountries" list="countries" name="From" placeholder="Singapore" autocomplete="off"
+                    required>
                 <label for="toCountries">To:</label>
-                <input id="toCountries" list="countries" name="To" list="countries" placeholder="Osaka"
-                    autocomplete="off" required>
+                <input id="toCountries" list="countries" name="To" placeholder="Osaka" autocomplete="off" required>
             </div>
             <br>
             <div>

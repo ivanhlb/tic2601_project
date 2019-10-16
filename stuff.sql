@@ -34,3 +34,7 @@ CREATE TABLE flight_schedule (
             ▪ Country
             ▪ City
 )
+
+CREATE TABLE flight (
+    
+)

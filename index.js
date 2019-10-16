@@ -56,6 +56,17 @@ app.post('/search', (req, res) => {
     // connection.query(
     //     'SELECT * FROM '
     // )    //to be done to integrate DB.
+    connection.query(
+        'SELECT * from country ORDER BY name', (err, result, fields) => {
+            if (err) {
+                console.log(err);
+                res.render('500');
+            }
+            else {
+
+            }
+        }
+    )
     //REGION stand in data
     param.firstFlights = [
         { id: "SQ241", price: 1534.23, depart_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.startDate.getDate(), 9, 20), arrival_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.endDate.getDate(), 16, 50) },
@@ -70,17 +81,43 @@ app.post('/search', (req, res) => {
         ]
     }
     //ENDREGION stand in data
-    console.dir(param);
+
     res.render('flightslists', param);
 });
 //403 forbidden, 404 not found, 500 internal server error
 
 app.post('/particulars', (req, res) => {    //this is for inserting your personal particulars once you decide which flight to take.
     console.dir(req.body);
-    res.render('passenger_details');
+    //get results from plane.
+
+    res.render('passenger_details', { planes: null });
 }); //to implement
-app.get('/admin', (req, res) => { res.render('error', { err: 403 }) }); //to implement
-app.get('/account', (req, res) => res.render('error', { err: 404 }));    //to implement
-app.get('/*', (req, res) => res.render('error', { err: 404 }));         //default 404 route
+app.get('/test', (req, res) => {
+    res.render("confirm_details");
+});
+app.get('/admin', (req, res) => { res.render('admin_login') });
+app.post('/admin', (req, res) => { res.render('admin_panel') }); //to implement
+
+
+app.get('/account', (req, res) => {
+    connection.query(
+        'SELECT * from country ORDER BY name', (err, result, fields) => {
+            if (err) {
+                console.log(err);
+                res.render('404');  //when submit form.
+            }
+            else {
+                res.render('account', { countries: result });
+            }
+        }
+    )
+});    //to implement
+app.post('/account', (req, res) => {
+    console.dir(req.body);
+    res.render('account_details');
+});          //to implement
+
+
+app.get('/*', (req, res) => res.render('error', { err: 404 }));          //default 404 route
 app.post('/*', (req, res) => res.render('error', { err: 404 }));         //default 404 route
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
