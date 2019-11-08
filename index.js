@@ -114,7 +114,39 @@ app.get('/account', (req, res) => {
 });    //to implement
 app.post('/account', (req, res) => {
     console.dir(req.body);
-    res.render('account_details');
+    if (req.body.email != null) {
+        try {
+            connection.query(
+                'SELECT customer_id from customer where email=' + req.body.email
+            )
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    else {
+        try {
+            connection.query(
+                'SELECT customer_id from customer where firstname='
+                + req.body.firstname + 'and lastname=' + req.body.lastname, (err, result, fields) => {
+
+                }
+            )
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    var constraint = (req.body.email != null) ? "email=" + req.body.email : "firstname=" + req.body.firstname + " and lastname=" + req.body.lastname;
+    connection.query(
+        'SELECT * from booking WHERE bookingID=' + req.body.bookingID + 'and ' + constraint, (err, result, fields) => {
+            if (err) {
+                console.log(err);
+                res.render('404');  //when submit form.
+            }
+            else {
+                res.render('account', { countries: result });
+            }
+        }
+    )
 });          //to implement
 
 

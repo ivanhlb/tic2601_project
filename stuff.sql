@@ -29,7 +29,7 @@ CREATE TABLE plane_layout(
     seat_id CHAR(2) PRIMARY KEY,
     class_type VARCHAR() 
 )
-
+select * from booking where booking_id = '12314' and
 CREATE TABLE ticket (
     ticket_id CHAR(15) PRIMARY KEY,
     seat_id CHAR(2) FOREIGN KEY REFERENCES
@@ -38,6 +38,12 @@ CREATE TABLE ticket (
         ◦ Customer ID FOREIGN KEY
 )
 CREATE TABLE booking (
-    booking_id VARCHAR(8) PRIMARY KEY;
-    flight_id VARCHAR(5) FOREIGN KEY REFERENCES flight_schedule(flight_id);
+    booking_id VARCHAR(8) PRIMARY KEY,
+    flight_id VARCHAR(5) FOREIGN KEY REFERENCES flight_schedule(flight_id)
+)
+CREATE TABLE customer (
+    customer_id int PRIMARY KEY CHECK(customer),
+    firstname VARCHAR(64) NOT NULL,
+    lastname VARCHAR(64) NOT NULL,
+    
 )
