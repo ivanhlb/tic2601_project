@@ -24,7 +24,7 @@
 <tbody>
     <!--directory is relative-->
         <% flights.forEach(function(f){ %>
-<%- include('flightrow', {flightType: flight, flightID: f.id, price: f.price, depart_time: f.depart_time, arrival_time: f.arrival_time}); %>
+<%- include('flightrow', {flightType: flight, flightID: f.id, price: f.BasePrice, depart_time: f.DepartureDatetime, arrival_time: f.ArrivalDatetime, from: from, to: to}); %>
 <% }); %>
 </tbody>
 </table>

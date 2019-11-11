@@ -11,11 +11,6 @@ function eventCallback(elem) {
             returnDate.previousElementSibling.hidden = false;
             // console.log("selected return");
             break;
-        case "multicityflight":
-            returnDate.hidden = false;
-            returnDate.previousElementSibling.hidden = false;
-            // console.log("selected multicity");
-            break;
         default:
             console.warn("unknown radio input")
             break;

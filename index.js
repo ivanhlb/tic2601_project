@@ -26,12 +26,13 @@ connection.connect((err) => {
 
 function renderMainPage(res) {
     connection.query(
-        'SELECT * from country ORDER BY name', (err, result, fields) => {
+        'SELECT City, Country from City ORDER BY City', (err, result, fields) => {
             if (err) {
                 console.log(err);
                 res.render('404');  //when submit form.
             }
             else {
+                console.dir(result);
                 res.render('main', { 'countries': result });
             }
         }
@@ -51,38 +52,63 @@ app.post('/search', (req, res) => {
     param.from = req.body.From;
     param.to = req.body.To;
     param.startDate = new Date(req.body.startDate);
-    param.endDate = new Date(req.body.returnDate);
+    param.returnDate = new Date(req.body.returnDate);
     param.flightType = req.body.flightType; //referring to the type of flights
-    // connection.query(
-    //     'SELECT * FROM '
-    // )    //to be done to integrate DB.
-    connection.query(
-        'SELECT * from country ORDER BY name', (err, result, fields) => {
-            if (err) {
-                console.log(err);
-                res.render('500');
+
+    startDateStr = (param.startDate.getMonth() + 1) + '/' + param.startDate.getDate() + '/' + param.startDate.getFullYear();
+    returnDateStr = (param.returnDate.getMonth() + 1) + '/' + param.returnDate.getDate() + '/' + param.returnDate.getFullYear();
+    fromCity = param.from.split(', ');
+    toCity = param.to.split(', ');
+    //flight_id, price, depart_time and arrival time.
+    sqlquery =
+        "SELECT f.FlightID, f.Route, f.BasePrice, r.DepartureDatetime, r.ArrivalDatetime FROM Flight f INNER JOIN Route r ON f.Route = r.Route WHERE r.DepartureCity = '" + fromCity[0]
+        + "' and r.ArrivalCity = '" + toCity[0] + "' and r.DepartureDatetime LIKE '%"
+        + startDateStr + "%'";
+    connection.query(sqlquery, (err, result, fields) => {
+        if (err) {
+            console.log(err);
+            res.render('500');
+        }
+        else {
+            if (result.length == 0) {
+                console.warn("no arrival flights found!");
             }
             else {
+                console.log('found arrival flights.');
+                // console.dir(result);
+                param.firstFlights = result;
 
+                if (param.flightType != "oneway") {     //if return flight
+                    console.log("checking return flights.");
+                    sqlquery =
+                        "SELECT f.FlightID, f.Route, f.BasePrice, r.DepartureDatetime, r.ArrivalDatetime FROM Flight f INNER JOIN Route r ON f.Route = r.Route WHERE r.DepartureCity = '" + toCity[0]
+                        + "' and r.ArrivalCity = '" + fromCity[0] + "' and r.DepartureDatetime LIKE '%"
+                        + startDateStr + "%'";
+                    connection.query(sqlquery, (err, next_result, fields) => {
+                        if (err) {
+                            console.log(err);
+                            res.render('500');
+                        } else {
+                            if (result.length == 0) {
+                                console.warn("no return flights found!");
+                            }
+                            else {
+                                console.log('found return flights.');
+                                // console.dir(next_result);
+                                param.nextFlights = next_result;
+                                console.log(param.nextFlights[0]);
+                                res.render('flightslists', param);
+                            
+                            }
+                        }
+                    })
+                }
+                else {  //if one-way.
+
+                }
             }
         }
-    )
-    //REGION stand in data
-    param.firstFlights = [
-        { id: "SQ241", price: 1534.23, depart_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.startDate.getDate(), 9, 20), arrival_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.endDate.getDate(), 16, 50) },
-        { id: "SQ161", price: 1234.23, depart_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.startDate.getDate(), 11, 30), arrival_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.endDate.getDate(), 19, 50) },
-        { id: "SQ652", price: 1004.23, depart_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.startDate.getDate(), 2, 30), arrival_time: new Date(param.startDate.getFullYear(), param.startDate.getMonth(), param.endDate.getDate(), 9, 50) }
-    ]       //list of departing flights
-    if (param.flightType != "oneway") {
-        param.nextFlights = [ //list of returning/next multicity flights.
-            { id: "SQ341", price: 1534.23, depart_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 9, 25), arrival_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 16, 50) },
-            { id: "SQ761", price: 1234.23, depart_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 11, 25), arrival_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 19, 50) },
-            { id: "SQ612", price: 1004.23, depart_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 2, 30), arrival_time: new Date(param.endDate.getFullYear(), param.endDate.getMonth(), param.endDate.getDate(), 9, 50) }
-        ]
-    }
-    //ENDREGION stand in data
-
-    res.render('flightslists', param);
+    })
 });
 //403 forbidden, 404 not found, 500 internal server error
 

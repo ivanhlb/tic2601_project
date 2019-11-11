@@ -15,29 +15,25 @@
                 <label for="returnflight">Return: </label>
                 <input type="radio" name="flightType" id="returnflight" oninput="eventCallback(this)" value="return"
                     checked autocomplete="off">
-                <label for="multicityflight">Multi-City: </label>
-                <input type="radio" name="flightType" id="multicityflight" oninput="eventCallback(this)"
-                    value="multicity" autocomplete="off">
-                <!--basically one way, many times-->
             </div>
             <br>
             <datalist id="countries">
                 <% if(countries) { %>
                 <% countries.forEach(function(c) { %>
-                <option value='<%= c.name %>'><%= c.name %></option>
+                <option value='<%= c.City %>, <%= c.Country %>'><%= c.City %>, <%= c.Country %></option>
                 <% }); %>
                 <% } else { %>
-                <option value="Singapore">Singapore</option>
-                <option value="China">China</option>
-                <option value="Germany">Germany</option>
+                <option value="Singapore, Singapore">Singapore, Singapore</option>
+                <option value="Beijing, China">Beijing, China</option>
+                <option value="Frankfurt, Germany">Frankfurt, Germany</option>
                 <% }; %>
             </datalist>
             <div>
                 <label for="fromCountries">From:</label>
-                <input id="fromCountries" list="countries" name="From" placeholder="Singapore" autocomplete="off"
+                <input id="fromCountries" list="countries" name="From" placeholder="Singapore, Singapore" autocomplete="off"
                     required>
                 <label for="toCountries">To:</label>
-                <input id="toCountries" list="countries" name="To" placeholder="Osaka" autocomplete="off" required>
+                <input id="toCountries" list="countries" name="To" placeholder="Osaka, Japan" autocomplete="off" required>
             </div>
             <br>
             <div>

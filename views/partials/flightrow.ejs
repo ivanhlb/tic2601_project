@@ -1,9 +1,8 @@
 <% 
-   var departureTime = depart_time.toLocaleTimeString();
-   var departureDate =depart_time.toLocaleDateString();
-   var arrivalTime = arrival_time.toLocaleTimeString(); 
-   var arrivalDate =arrival_time.toLocaleDateString();
-
+   var departureTime = depart_time.split(' ')[1];
+   var departureDate =depart_time.split(' ')[0];
+   var arrivalTime = arrival_time.split(' ')[1]; 
+   var arrivalDate =arrival_time.split(' ')[0];
 %>
 <tr>
     <th scope="row">
@@ -17,7 +16,7 @@
                 Non-stop - 6h 20mins <br>
                 <div style="font-size:25px; color:rgb(0, 36, 114);"><%=departureTime%></div>
                 <%=departureDate%>
-                Singapore
+                <%=from%>
             </div>
             <div style="width: 50px;float: left;position: relative;top: 20px;left: 0px;">
                 <img src="https://img.icons8.com/material/24/000000/arrow.png">
@@ -31,7 +30,7 @@
                 <br>
                 <div style="font-size:25px; color:rgb(0, 36, 114);"><%=arrivalTime%> </div>
                 <%=arrivalDate%>
-                Seoul
+                <%=to%>
             </div>
             <br>
         </label>

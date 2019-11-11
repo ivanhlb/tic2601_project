@@ -20,6 +20,8 @@ Group 9 Members
   - if so, what query is needed?
 
 ### TODO:  
+- [ ] search page
+  - [ ] complete sql and db integration
 - [ ] particulars page
   - [ ] selection of seats
   - [ ] passing of passenger details
