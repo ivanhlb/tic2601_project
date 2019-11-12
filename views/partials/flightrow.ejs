@@ -6,25 +6,31 @@
 %>
 <tr>
     <th scope="row">
-        <label for=<%=flightID%>> <br>
+        <em><%=airline%></em>
+        <br>
+        <label for='<%=flightID%>: <%=airline%>'> <br>
             <div style="float:left;position: relative;top: 20px">
-                <input type="radio" id=<%=flightID%> autocomplete="off" name=<%=flightType%> value=<%=flightID%>
-                    required>
+                <input type="radio" id=<%=flightID%> autocomplete="off" name=<%=flightType%>
+                    value='<%=airline%>,<%=flightID%>' required>
                 <%=flightID%>
             </div>
             <div id="block1">
-                Non-stop - 6h 20mins <br>
+                <br>
+                <!-- Non-stop - 6h 20mins <br> -->
                 <div style="font-size:25px; color:rgb(0, 36, 114);"><%=departureTime%></div>
                 <%=departureDate%>
+                <%if(flight == "return") {%>
                 <%=from%>
+                <%}%>
             </div>
             <div style="width: 50px;float: left;position: relative;top: 20px;left: 0px;">
                 <img src="https://img.icons8.com/material/24/000000/arrow.png">
             </div>
             <div id="block2">
                 SGD
-                <div style="font-size:25px; color:rgb(0, 112, 112);"><%=price%> </div>
-                PER ADULT
+                <div style="font-size:25px; color:rgb(0, 112, 112);"><%=price%>
+            </div>
+            PER ADULT
             </div>
             <div id="block2">
                 <br>

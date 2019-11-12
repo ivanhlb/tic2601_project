@@ -11,6 +11,13 @@
 <body>
     <%- include('partials/header'); -%>
     <%- include('partials/searchform'); -%>
+    <div class="container">
+        <%if(!found) {%>
+        <div class="alert alert-danger" role="alert">
+            No Flights found! Try again.
+        </div>
+        <%}%>
+    </div>
 </body>
 
 </html>
