@@ -7,20 +7,20 @@
 <div class="plane">
   <div class="exit exit--front fuselage">
   </div>
-  <ol class="cabin fuselage">
+  <div class="cabin fuselage">
     <% for (let j = 1; j <= 10; j++) {%>
-      <li class="row--<%=j%>">
+      <div class="row--<%=j%>">
           <ol class="seats" type="A">
             <% for (let i = 0; i < 6; i++) {%>
         <%      var temp = "A".charCodeAt(0) + i, seatNumber = j + String.fromCharCode(temp);%>
         <%var currSeat = seats.find((e)=>{ return e["SeatID"] == seatNumber}); %>
         <% var is_disabled = (currSeat["Available"] == "Available") ? false : true %>
-        <%- include('seat', {seatNumber: seatNumber, disabled: is_disabled}); %>
+        <%- include('seat', {seatNumber: seatNumber, type: type, disabled: is_disabled}); %>
         <%} %>
       </ol>
-      </li>
+      </div>
       <%}%>
-  </ol>
+    </div>
   <div class="exit exit--back fuselage">
   </div>
 </div>

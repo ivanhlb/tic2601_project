@@ -6,13 +6,13 @@
   <link rel="stylesheet" href="passenger_details.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="index.js"></script>
   <title>Airline Ticketing System</title>
 </head>
 
 <body>
 
   <div class="container">
-<%=pax%>
     <table>
       <%- include('partials/particulars_header', {from: from, to: to, departDate: departDate, returnDate: returnDate}); -%>
 
@@ -23,99 +23,106 @@
 
         <!-- Creat tabs to fill in details for multiple passengers instances-->
         <div class="tab">
-        <% for(var i = 1; i <= pax; i++){ %>
-          <button class="tablinks" onclick="openPassenger(event, 'Passenger<%=i%>')" id="defaultOpen">Passenger <%=i%></button>
-        <% } %>
-        </div>
-        <% for(var i = 1; i <= pax; i++){ %>
-          <div id="Passenger<%=i%>" class="tabcontent">
-              <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Passenger <%=i%> </div>
-              <!-- Passenger details -->
-              <form action="/submit">
-                <br>Membership number:<br>
-                <input type="text" name="Membership number" id="Membership number">
-                <b>
-                  <h3>Name
-                  </h3>
-                </b>
-                Title: <br>
-                <select name="Title" size="1">
-                  <option selected disabled>Select</option>
-                  <option value="Mr">Mr</option>
-                  <option value="Mrs">Mrs</option>
-                  <option value="Miss">Miss</option>
-                  <option value="Mdm">Mdm</option>
-                  <option value="Ms">Ms</option>
-                  <option value="Mstr">Mstr</option>
-                  <option value="Dr">Dr</option>
-                  <option value="Prof">Prof</option>
-                  <option value="Others">Others</option>
-                </select>
-                <br>First: <br>
-                <input type="text" name="First" id="First">
-                <br>Last:<br>
-                <input type="text" name="Last" id="Last">
-                <b>
-                  <h3>Contact details
-                  </h3>
-                </b>
-                Email address:<br>
-                <input type="email" name="Email address" id="Email address">
-                <br>Phone number:<br>
-                <select name="Country Code" size="1">
-                  <option selected disabled>Country/Region Code</option>
-                  <option value="Singapore (+65)">Singapore (+65)</option>
-                </select>
-                <input type="text" name="Phone number" id="Phone number">
-                <b>
-                  <h3>Others
-                  </h3>
-                </b>
-                Any dietary requirements?<br>
-                <select name="Country Code" size="1">
-                  <option selected disabled>Select</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
-                <input type="text" name="Remarks" id="Remarks">
-                <br><br>
-            </div>
+          <% for(var i = 1; i <= pax; i++){ %>
+          <button class="tablinks" onclick="openPassenger(event, 'Passenger<%=i%>')" id='passenger<%=i%>-tab'>Passenger
+            <%=i%></button>
           <% } %>
-        <!-- Function to create tabs for multiple passengers instances -->
-        <script>
-          function openPassenger(evt, Passenger) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-              tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-              tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(Passenger).style.display = "block";
-            evt.currentTarget.className += " active";
-          }
-          // Get the element with id="defaultOpen" and click on it
-          document.getElementById("defaultOpen").click();
-        </script>
+        </div>
+        <form action="/submitparticulars" method="POST" name="detailsForm" id="detailsForm">
+          <% for(var i = 1; i <= pax; i++){ %>
+          <div id="Passenger<%=i%>" class="tabcontent" style="display: none;">
+            <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Passenger <%=i%>
+            </div>
+            <!-- Passenger details -->
+            <br>Membership number:<br>
+            <input type="text" name="Passenger <%=i%> membership-no">
+            <b>
+              <h3>Name
+              </h3>
+            </b>
+            Title: <br>
+            <select name="Passenger <%=i%> Title" size="1" required> 
+              <option selected disabled>Select</option>
+              <option value="Mr">Mr</option>
+              <option value="Mrs">Mrs</option>
+              <option value="Miss">Miss</option>
+              <option value="Mdm">Mdm</option>
+              <option value="Ms">Ms</option>
+              <option value="Mstr">Mstr</option>
+              <option value="Dr">Dr</option>
+              <option value="Prof">Prof</option>
+              <option value="Others">Others</option>
+            </select>
+            <br>First: <br>
+            <input type="text" name="Passenger <%=i%> First" required>
+            <br>Last:<br>
+            <input type="text" name="Passenger <%=i%> Last" required>
+            <b>
+              <h3>Contact details
+              </h3>
+            </b>
+            Email address:<br>
+            <input type="email" name="Passenger <%=i%> email" required>
+            <br>Phone number:<br>
+            <select name="Passenger <%=i%> Country Code" size="1">
+              <option selected disabled>Country/Region Code</option>
+              <option value="Singapore (+65)">Singapore (+65)</option>
+            </select>
+            <input type="tel" name="Passenger <%=i%> phone" pattern="[8-9]{1}[0-9]{7}" placeholder="90123456">
+            <b>
+              <h3>Others
+              </h3>
+            </b>
+            Any dietary requirements?<br>
+            <select name="Passenger <%=i%> Country Code" size="1" required>
+              <option selected disabled>Select</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+            <input type="text" name="Passenger <%=i%> remarks">
+            <br><br>
+          </div>
+          <% } %>
 
-        <!-- Seat selections - Departing -->
-        <br>
-        <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Selection of seats -
-          Departing flight </div>
-        <%- include('partials/plane', {seats: seats}); -%>
+          <!-- Seat selections - Departing -->
+          <br>
+          <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Selection of seats -
+            Departing flight </div>
+          <%- include('partials/plane', {seats: seats, type: "depart"}); -%>
 
-        <!-- Seat selections - Returning -->
-        <br>
-        <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Selection of seats -
-          Returning flight </div>
-        <%- include('partials/plane', {seats: seats}); -%>
+          <!-- Seat selections - Returning -->
+          <br>
+          <div style="font-size:25px; color:rgb(0, 112, 112); font-size:30px ; font-weight: bold;">Selection of seats -
+            Returning flight </div>
+          <%- include('partials/plane', {seats: seats, type: "return"}); -%>
 
-        <!-- Proceed to confirmation -->
-        <br><input class="btn btn-primary btn-lg" style="float: right;" type="submit" name="formSubmit" formmethod="POST" value="Proceed" class="button1"><br>
+          <!-- Proceed to confirmation -->
+          <br><input class="btn btn-primary btn-lg button1" style="float: right;" type="submit" name="formSubmit"
+            formmethod="POST" value="Submit"><br>
         </form>
     </table>
+
+    <!-- Function to create tabs for multiple passengers instances -->
+    <script>
+      var pax = <%=pax%>;
+      function openPassenger(evt, Passenger) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(Passenger).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      document.getElementById('Passenger1').style.display = "block";
+      p1_tab = document.getElementById('passenger1-tab');
+      p1_tab.selected = true;
+      p1_tab.className = "tablinks active";
+    </script>
   </div>
 </body>
 

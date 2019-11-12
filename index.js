@@ -132,6 +132,7 @@ app.post('/particulars', (req, res) => {    //this is for inserting your persona
     pool.query(sql_str, (err, result, fields) => {
         if (err) console.log(err);
         else {
+            console.dir(req.body.pax)
             res.render('passenger_details', {
                 from: req.body.from,
                 to: req.body.to,
@@ -144,9 +145,23 @@ app.post('/particulars', (req, res) => {    //this is for inserting your persona
 
         }
     })
-}); //to implement
-app.get('/test', (req, res) => {
-    res.render("confirm_details");
+});
+app.post('/submitparticulars', (req, res) => {
+    sql_str = "SELECT * FROM SEAT"
+    pool.query(sql_str, (err, result, fields) => {
+        if (err) console.log(err);
+        else {
+            res.render("confirm_details", {
+                from: req.body.from,
+                to: req.body.to,
+                departDate: req.body.departDate,
+                returnDate: req.body.returnDate,
+                route: req.body.Route,
+                pax: req.body.pax,
+                seats: result
+            });
+        }
+    })
 });
 app.get('/admin', (req, res) => { res.render('admin_login') });
 app.post('/admin', (req, res) => { res.render('admin_panel') }); //to implement

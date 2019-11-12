@@ -1,0 +1,275 @@
+html,
+head,
+body {
+  width: 100%;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+}
+
+h2 {
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 0;
+  font-size: 25px;
+}
+
+h3 {
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  padding: 0;
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+#block1 {
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  float: left;
+}
+
+#block2 {
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  float: right;
+}
+
+#Payment {
+  display: none;
+}
+
+.button1 {
+  background-color: rgb(0, 36, 114);
+  color: white;
+}
+
+.legend {
+  list-style: none;
+}
+
+.legend li {
+  float: left;
+  margin-right: 10px;
+}
+
+.legend span {
+  border: 1px;
+  float: left;
+  width: 10px;
+  height: 12px;
+  margin: 2px;
+}
+
+.legend .available {
+  border-radius: 3px;
+  background-color: rgb(10, 75, 10);
+}
+
+.legend .notavailable {
+  border-radius: 3px;
+  background-color: #949393;
+}
+
+.legend .selected {
+  border-radius: 3px;
+  background-color: rgb(0, 36, 114);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+.plane {
+  margin: 20px auto;
+  max-width: 300px;
+}
+
+.exit {
+  position: relative;
+  height: 50px;
+}
+
+.exit:before,
+.exit:after {
+  content: "EXIT";
+  font-size: 14px;
+  line-height: 18px;
+  padding: 0px 2px;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  display: block;
+  position: absolute;
+  color: green;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.exit:before {
+  left: 0;
+}
+
+.exit:after {
+  right: 0;
+}
+
+.fuselage {
+  border-right: 3px solid #d8d8d8;
+  border-left: 3px solid #d8d8d8;
+}
+
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.seats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.seat {
+  display: flex;
+  flex: 0 0 14.28571428571429%;
+  padding: 5px;
+  position: relative;
+}
+
+.seat:nth-child(3) {
+  margin-right: 14.28571428571429%;
+}
+
+.seat input[type=checkbox] {
+  opacity: 0;
+}
+
+.seat input[type=checkbox]:checked+label {
+  background: rgb(0, 36, 114);
+  box-shadow: 0 0 0px 3px #5C6AFF;
+}
+
+.seat input[type=checkbox]:disabled+label {
+  background: #949393;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.seat input[type=checkbox]:disabled+label:after {
+  content: "X";
+  text-indent: 0;
+  top: 4px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.seat input[type=checkbox]:disabled+label:hover {
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.seat label {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  line-height: 1.5rem;
+  padding: 4px 0;
+  background: rgb(10, 75, 10);
+  border-radius: 5px;
+}
+
+.seat label:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0px 2px #5C6AFF;
+}
+
+* {
+  box-sizing: border-box
+}
+
+/* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 20%;
+  height: 520px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 75%;
+  border-left: none;
+  height: 520px;
+}
+
+.paymentTabContent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 66%;
+  border-left: none;
+  height: 390px;
+}
+
+.passengerEdit {
+  margin-left: 55em;
+  margin-top: 1em;
+  background-color: rgb(0, 36, 114);
+  color: white;
+
+}
+
+.checkOutbutton1 {
+  background-color: rgb(0, 36, 114);
+  color: white;
+  margin-bottom: 5;
+}
