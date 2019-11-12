@@ -21,7 +21,13 @@
         <%- include('partials/flights', {flight: "return", flights: nextFlights}); -%>
         <%}%>
             <br>
-
+        <input type="hidden" name="from" value="<%=from%>">
+        <input type="hidden" name="to" value="<%=to%>">
+        <input type="hidden" name="departDate" value="<%=startDate.toDateString().toUpperCase()%>">
+        <input type="hidden" name="returnDate" value="<%=returnDate.toDateString().toUpperCase()%>">
+        <input type="hidden" name="route" value="<%=route%>">
+        <input type="hidden" name="pax" value="<%=pax%>">
+        
             <!-- Proceed to confirmation -->
             <div style="text-align: right; margin: 2em;">
               <button type="button" class="btn btn-warning btn-lg" onclick="window.history.back()">Back</button>

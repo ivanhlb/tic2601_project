@@ -8,9 +8,9 @@
     <th scope="row">
         <em><%=airline%></em>
         <br>
-        <label for='<%=flightID%>: <%=airline%>'> <br>
+        <label for='<%=flightID%>: <%=airline%> <%=departureTime%> <%=flightType%>'> <br>
             <div style="float:left;position: relative;top: 20px">
-                <input type="radio" id=<%=flightID%> autocomplete="off" name=<%=flightType%>
+                <input type="radio" id='<%=flightID%>: <%=airline%> <%=departureTime%> <%=flightType%>' autocomplete="off" name=<%=flightType%>
                     value='<%=airline%>,<%=flightID%>' required>
                 <%=flightID%>
             </div>
@@ -19,9 +19,14 @@
                 <!-- Non-stop - 6h 20mins <br> -->
                 <div style="font-size:25px; color:rgb(0, 36, 114);"><%=departureTime%></div>
                 <%=departureDate%>
+                <br>
                 <%if(flight == "return") {%>
+                <%=to%>
+                <%}%>
+                <%if(flight == "depart") {%>
                 <%=from%>
                 <%}%>
+
             </div>
             <div style="width: 50px;float: left;position: relative;top: 20px;left: 0px;">
                 <img src="https://img.icons8.com/material/24/000000/arrow.png">
@@ -36,7 +41,14 @@
                 <br>
                 <div style="font-size:25px; color:rgb(0, 36, 114);"><%=arrivalTime%> </div>
                 <%=arrivalDate%>
+                <br>
+                <%if(flight == "return") {%>
+                <%=from%>
+                <%}%>
+                    <%if(flight == "depart") {%>
                 <%=to%>
+                <%}%>
+    
             </div>
             <br>
         </label>

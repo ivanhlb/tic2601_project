@@ -8,88 +8,18 @@
   <div class="exit exit--front fuselage">
   </div>
   <ol class="cabin fuselage">
-    <li class="row--1">
-
-      <ol class="seats" type="A">
-        <% for (let i = 0; i < 6; i++) {%>
-        <%      var temp = "A".charCodeAt(0) + i, seatNumber = "1" + String.fromCharCode(temp);%>
-        <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
+    <% for (let j = 1; j <= 10; j++) {%>
+      <li class="row--<%=j%>">
+          <ol class="seats" type="A">
+            <% for (let i = 0; i < 6; i++) {%>
+        <%      var temp = "A".charCodeAt(0) + i, seatNumber = j + String.fromCharCode(temp);%>
+        <%var currSeat = seats.find((e)=>{ return e["SeatID"] == seatNumber}); %>
+        <% var is_disabled = (currSeat["Available"] == "Available") ? false : true %>
+        <%- include('seat', {seatNumber: seatNumber, disabled: is_disabled}); %>
         <%} %>
       </ol>
-    </li>
-    <li class="row--2">
-      <ol class="seats" type="A">
-        <% for (let i = 0; i < 6; i++) {%>
-        <%      var temp = "A".charCodeAt(0) + i, seatNumber = "2" + String.fromCharCode(temp);%>
-        <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
-        <%} %>
-    </li>
-  </ol>
-  </li>
-  <li class="row--3">
-    <ol class="seats" type="A">
-      <% for (let i = 0; i < 6; i++) {%>
-      <%      var temp = "A".charCodeAt(0) + i, seatNumber = "3" + String.fromCharCode(temp);%>
-      <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
-      <%} %>
-    </ol>
-  </li>
-  <li class="row--4">
-    <ol class="seats" type="A">
-      <% for (let i = 0; i < 6; i++) {%>
-      <%      var temp = "A".charCodeAt(0) + i, seatNumber = "4" + String.fromCharCode(temp);%>
-      <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
-      <%} %>
-    </ol>
-  </li>
-  <li class="row--5">
-    <ol class="seats" type="A">
-      <% for (let i = 0; i < 6; i++) {%>
-      <%      var temp = "A".charCodeAt(0) + i, seatNumber = "5" + String.fromCharCode(temp);%>
-      <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
-      <%} %>
-    </ol>
-  </li>
-  <li class="row--6">
-    <ol class="seats" type="A">
-      <% for (let i = 0; i < 6; i++) {%>
-      <%      var temp = "A".charCodeAt(0) + i, seatNumber = "6" + String.fromCharCode(temp);%>
-      <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
-      <%} %>
-    </ol>
-  </li>
-  <li class="row--7">
-    <ol class="seats" type="A">
-      <% for (let i = 0; i < 6; i++) {%>
-      <%      var temp = "A".charCodeAt(0) + i, seatNumber = "7" + String.fromCharCode(temp);%>
-      <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
-      <%} %>
-    </ol>
-  </li>
-  <li class="row--8">
-    <ol class="seats" type="A">
-      <% for (let i = 0; i < 6; i++) {%>
-      <%      var temp = "A".charCodeAt(0) + i, seatNumber = "8" + String.fromCharCode(temp);%>
-      <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
-      <%} %>
-    </ol>
-  </li>
-  <li class="row--9">
-    <ol class="seats" type="A">
-      <% for (let i = 0; i < 6; i++) {%>
-      <%      var temp = "A".charCodeAt(0) + i, seatNumber = "9" + String.fromCharCode(temp);%>
-      <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
-      <%} %>
-    </ol>
-  </li>
-  <li class="row--10">
-    <ol class="seats" type="A">
-      <% for (let i = 0; i < 6; i++) {%>
-      <%      var temp = "A".charCodeAt(0) + i, seatNumber = "10" + String.fromCharCode(temp);%>
-      <%- include('seat', {seatNumber: seatNumber, disabled: "disabled"}); %>
-      <%} %>
-    </ol>
-  </li>
+      </li>
+      <%}%>
   </ol>
   <div class="exit exit--back fuselage">
   </div>

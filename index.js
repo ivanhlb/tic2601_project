@@ -13,30 +13,23 @@ app.set('view engine', 'ejs');
 const port = process.env.PORT || "3000";   //changed to this as the website is now https
 
 const mysql = require('mysql');
-const sql_pw = 'baT7d()' + '\\' +'X!:h';    // raw: 'baT7d()\X!:h'
+const sql_pw = 'baT7d()' + '\\' + 'X!:h';    // raw: 'baT7d()\X!:h'
 var azure_mysql_str = {
     connctionLimit: 5,
     host: "tic2601-ticketing.mysql.database.azure.com",
     user: "su@tic2601-ticketing",
     password: sql_pw,
-    database: 'app', 
-    port: 3306, 
+    database: 'app',
+    port: 3306,
     ssl: true
 };
 const local_mysql_str = {
     connctionLimit: 5,
     host: 'localhost',
     user: 'root',
-    // user: 'su',
-    //   password: 'baT7d()\X!:h',
     database: 'app'
 };
 const pool = mysql.createPool(azure_mysql_str);
-// const connection = mysql.createConnection(azure_mysql_str);
-// connection.connect((err) => {
-//     if (err) throw err;
-//     console.log('Connected!');
-// });
 
 function renderMainPage(res, found) {
     pool.query(
@@ -46,7 +39,7 @@ function renderMainPage(res, found) {
                 res.render('error', { err: 404 });  //when submit form.
             }
             else {
-                res.render('main', { 'countries': result, 'found':found });
+                res.render('main', { 'countries': result, 'found': found });
             }
         }
     )
@@ -67,6 +60,7 @@ app.post('/search', (req, res) => {
     param.startDate = new Date(req.body.startDate);
     param.returnDate = new Date(req.body.returnDate);
     param.flightType = req.body.flightType; //referring to the type of flights
+    param.pax = req.body.pax;
 
     startDateStr = (param.startDate.getMonth() + 1) + '/' + param.startDate.getDate() + '/' + param.startDate.getFullYear();
     returnDateStr = (param.returnDate.getMonth() + 1) + '/' + param.returnDate.getDate() + '/' + param.returnDate.getFullYear();
@@ -106,9 +100,11 @@ app.post('/search', (req, res) => {
                                 console.warn("no return flights found!");
                             }
                             else {
+
                                 console.log('found return flights.');
                                 // console.dir(next_result[0]);
                                 param.nextFlights = next_result;
+                                param.route = next_result[0]["Route"];
                                 res.render('flightslists', param);
                             }
                         }
@@ -126,12 +122,28 @@ app.post('/search', (req, res) => {
 app.post('/particulars', (req, res) => {    //this is for inserting your personal particulars once you decide which flight to take.
     depart_arr = req.body.depart.split(',')
     return_arr = req.body.return.split(',')
+    depart_airline = depart_arr[0]
+    depart_flight = depart_arr[1]
+    return_airline = return_arr[0]
+    return_flight = return_arr[1]
     //get results from plane.
-    console.log(req.body);
-    pool.query("", (err, result, fields) => {
+    // sql_str = "SELECT * FROM Flight where FlightID='" + depart_flight + "' AND Route='"+ req.body.route +"'";    //get actual flight
+    sql_str = "SELECT * FROM SEAT"
+    pool.query(sql_str, (err, result, fields) => {
+        if (err) console.log(err);
+        else {
+            res.render('passenger_details', {
+                from: req.body.from,
+                to: req.body.to,
+                departDate: req.body.departDate,
+                returnDate: req.body.returnDate,
+                route: req.body.Route,
+                pax: req.body.pax,
+                seats: result
+            });
 
+        }
     })
-    res.render('passenger_details', { planes: null });
 }); //to implement
 app.get('/test', (req, res) => {
     res.render("confirm_details");
